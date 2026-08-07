@@ -349,15 +349,8 @@
             animation: pulse-dot 2s infinite;
         }
         @keyframes pulse-dot {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scale(0.7);
-            }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.7); }
         }
         .hero h1 {
             font-size: 3.5rem;
@@ -389,13 +382,8 @@
             animation: blink 1s step-end infinite;
         }
         @keyframes blink {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
         .hero p {
             color: var(--text-muted);
@@ -407,49 +395,6 @@
             display: flex;
             flex-wrap: wrap;
             gap: 14px;
-        }
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .hero-image .photo-frame {
-            position: relative;
-            width: 340px;
-            height: 340px;
-            border-radius: 50%;
-            padding: 6px;
-            background: var(--accent-gradient);
-            box-shadow: 0 20px 60px rgba(108, 92, 231, 0.25);
-        }
-        .hero-image .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid var(--bg-primary);
-            transition: border var(--transition);
-        }
-        .hero-image .photo-frame .glow {
-            position: absolute;
-            inset: -12px;
-            border-radius: 50%;
-            background: var(--accent-gradient);
-            opacity: 0.15;
-            filter: blur(30px);
-            z-index: -1;
-            animation: glow-pulse 4s ease-in-out infinite;
-        }
-        @keyframes glow-pulse {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.15;
-            }
-            50% {
-                transform: scale(1.08);
-                opacity: 0.25;
-            }
         }
         .social-hero {
             display: flex;
@@ -475,6 +420,93 @@
             color: #fff;
             transform: translateY(-4px);
             border-color: var(--accent);
+        }
+
+        /* ============================================
+               HERO IMAGE (morphing + glow + cartes flottantes)
+            ============================================ */
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            aspect-ratio: 1/1;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .image-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.25;
+            filter: blur(60px);
+            animation: glow-pulse 4s ease-in-out infinite;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        @keyframes glow-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.25; }
+            50% { transform: scale(1.15); opacity: 0.45; }
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            border: 3px solid var(--accent);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 60px rgba(108, 92, 231, 0.35);
+            animation: morph 8s ease-in-out infinite;
+            transition: border-color var(--transition);
+        }
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+        }
+        .floating-card {
+            position: absolute;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            padding: 0.8rem 1.4rem;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: var(--shadow-card);
+            z-index: 2;
+            animation: float 3s ease-in-out infinite;
+            white-space: nowrap;
+        }
+        .card-1 {
+            top: 8%;
+            right: -12%;
+            animation-delay: 0s;
+        }
+        .card-2 {
+            bottom: 12%;
+            left: -12%;
+            animation-delay: 1.5s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-16px); }
+        }
+        .floating-card i {
+            font-size: 1.4rem;
+            color: var(--accent);
+        }
+        @media (max-width: 768px) {
+            .floating-card { display: none; }
+            .hero-image { max-width: 280px; }
         }
 
         /* ============================================
@@ -532,7 +564,6 @@
             color: var(--accent);
             font-size: 0.8rem;
         }
-
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -596,15 +627,21 @@
         }
 
         /* ============================================
-               PROJETS
+               PROJETS (avec images et overlays)
             ============================================ */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 28px;
         }
+
         .project-card {
-            padding: 1.8rem;
+            background: var(--bg-card);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            overflow: hidden;
             transition: all var(--transition);
             display: flex;
             flex-direction: column;
@@ -612,18 +649,55 @@
         .project-card:hover {
             transform: translateY(-8px);
             background: var(--bg-card-hover);
+            box-shadow: var(--shadow-glass);
         }
-        .project-card .icon {
-            font-size: 2.4rem;
-            color: var(--accent);
-            margin-bottom: 0.8rem;
+
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
         }
-        .project-card h3 {
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        .project-image .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.7), rgba(9, 132, 227, 0.7));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+        .project-card:hover .project-image .overlay {
+            opacity: 1;
+        }
+        .project-image .overlay span {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+
+        .project-content {
+            padding: 1.8rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-content h3 {
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 0.4rem;
         }
-        .project-card .meta {
+        .project-content .meta {
             font-size: 0.8rem;
             color: var(--text-muted);
             margin-bottom: 0.8rem;
@@ -631,24 +705,24 @@
             flex-wrap: wrap;
             gap: 12px;
         }
-        .project-card .meta span {
+        .project-content .meta span {
             display: flex;
             align-items: center;
             gap: 4px;
         }
-        .project-card p {
+        .project-content p {
             color: var(--text-muted);
             font-size: 0.93rem;
             flex: 1;
             margin-bottom: 1rem;
         }
-        .project-card .tech {
+        .project-content .tech {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
             margin-bottom: 1.2rem;
         }
-        .project-card .tech span {
+        .project-content .tech span {
             background: var(--bg-glass);
             padding: 0.2rem 0.8rem;
             border-radius: 60px;
@@ -657,12 +731,12 @@
             color: var(--text-muted);
             border: 1px solid var(--border-glass);
         }
-        .project-card .links {
+        .project-content .links {
             display: flex;
             gap: 12px;
             margin-top: auto;
         }
-        .project-card .links a {
+        .project-content .links a {
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--accent);
@@ -671,7 +745,7 @@
             gap: 6px;
             transition: gap var(--transition);
         }
-        .project-card .links a:hover {
+        .project-content .links a:hover {
             gap: 12px;
         }
 
@@ -877,10 +951,6 @@
             .social-hero {
                 justify-content: center;
             }
-            .hero-image .photo-frame {
-                width: 260px;
-                height: 260px;
-            }
             .about-grid {
                 grid-template-columns: 1fr;
             }
@@ -932,10 +1002,6 @@
             }
             .hero .subtitle {
                 font-size: 1.1rem;
-            }
-            .hero-image .photo-frame {
-                width: 200px;
-                height: 200px;
             }
             .section-title {
                 font-size: 1.8rem;
@@ -1043,9 +1109,15 @@
                 </div>
 
                 <div class="hero-image">
-                    <div class="photo-frame">
-                        <img src="image/moi3.jpeg" alt="Johan Kouassi" />
-                        <div class="glow"></div>
+                    <div class="image-glow"></div>
+                    <img src="image/moi3.jpeg" alt="Johan Kouassi" />
+                    <div class="floating-card card-1">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Code</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fa-solid fa-rocket"></i>
+                        <span>Innovation</span>
                     </div>
                 </div>
             </div>
@@ -1110,7 +1182,6 @@
             </div>
 
             <div class="skills-grid">
-                <!-- Web -->
                 <div class="skill-card glass">
                     <div class="icon"><i class="fa-solid fa-code"></i></div>
                     <h4>Développement Web</h4>
@@ -1120,7 +1191,6 @@
                         <span>PHP</span><span>Spring Boot</span>
                     </div>
                 </div>
-                <!-- Data & IA -->
                 <div class="skill-card glass">
                     <div class="icon"><i class="fa-solid fa-brain"></i></div>
                     <h4>Data &amp; IA</h4>
@@ -1130,7 +1200,6 @@
                         <span>OpenCV</span>
                     </div>
                 </div>
-                <!-- Base de données -->
                 <div class="skill-card glass">
                     <div class="icon"><i class="fa-solid fa-database"></i></div>
                     <h4>Bases de données</h4>
@@ -1138,7 +1207,6 @@
                         <span>SQL</span><span>MySQL</span><span>PostgreSQL</span>
                     </div>
                 </div>
-                <!-- Design & Outils -->
                 <div class="skill-card glass">
                     <div class="icon"><i class="fa-solid fa-pen-fancy"></i></div>
                     <h4>Design &amp; Outils</h4>
@@ -1151,98 +1219,97 @@
         </div>
     </section>
 
-    <!-- ========== PROJETS ========== -->
-    <!-- ========== PROJETS ========== -->
-<section id="projets">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="line"></span> Projets
-            </h2>
-            <p class="section-subtitle">Des réalisations concrètes alliant IA, data et développement</p>
+    <!-- ========== PROJETS (avec images) ========== -->
+    <section id="projets">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="line"></span> Projets
+                </h2>
+                <p class="section-subtitle">Des réalisations concrètes alliant IA, data et développement</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- WhatAPlant -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="image/plante.jpg" alt="WhatAPlant - reconnaissance de plantes" />
+                        <div class="overlay">
+                            <span>🌿 WhatAPlant</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>WhatAPlant</h3>
+                        <div class="meta">
+                            <span><i class="fa-brands fa-python"></i> Python · IA · OpenCV</span>
+                        </div>
+                        <p>
+                            Application de reconnaissance de plantes par photo. L'utilisateur prend un cliché
+                            et l'application identifie automatiquement la plante grâce à la vision par ordinateur.
+                        </p>
+                        <div class="tech">
+                            <span>Python</span><span>OpenCV</span><span>IA</span>
+                        </div>
+                        <div class="links">
+                            <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent IA Touristique -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="image/plateau.jpg" alt="Agent IA Touristique - voyage" />
+                        <div class="overlay">
+                            <span>🌍 Agent IA</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Agent IA Touristique</h3>
+                        <div class="meta">
+                            <span><i class="fa-solid fa-comment-dots"></i> n8n · LLM</span>
+                        </div>
+                        <p>
+                            Agent conversationnel accessible via WhatsApp/Telegram pour accompagner les touristes
+                            en Côte d'Ivoire (infos sites, hôtels, transports, événements). Automatisation avec n8n.
+                        </p>
+                        <div class="tech">
+                            <span>n8n</span><span>LLM</span><span>WhatsApp API</span>
+                        </div>
+                        <div class="links">
+                            <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analyse Croisée -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="image/imagepowerBi.jpg" alt="Analyse croisée - données" />
+                        <div class="overlay">
+                            <span>📊 Analyse</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Analyse Croisée</h3>
+                        <div class="meta">
+                            <span><i class="fa-solid fa-chart-simple"></i> Power BI · DAX</span>
+                        </div>
+                        <p>
+                            Tableau de bord interactif croisant trois sources (alcool, conflits armés, homicides)
+                            pour identifier les zones géographiques prioritaires en matière de sécurité et santé publique.
+                        </p>
+                        <div class="tech">
+                            <span>Power BI</span><span>DAX</span><span>Data Viz</span>
+                        </div>
+                        <div class="links">
+                            <a href="https://drive.google.com/file/d/1bua38W6w5HJVRaK4OTtOfojbQcpXp_mv/view?usp=drive_link" target="_blank"><i class="fa-solid fa-eye"></i> Voir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="projects-grid">
-            <!-- WhatAPlant -->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="image/plante.jpg" alt="WhatAPlant - reconnaissance de plantes" />
-                    <div class="overlay">
-                        <span>🌿 WhatAPlant</span>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>WhatAPlant</h3>
-                    <div class="meta">
-                        <span><i class="fa-brands fa-python"></i> Python · IA · OpenCV</span>
-                    </div>
-                    <p>
-                        Application de reconnaissance de plantes par photo. L'utilisateur prend un cliché
-                        et l'application identifie automatiquement la plante grâce à la vision par ordinateur.
-                    </p>
-                    <div class="tech">
-                        <span>Python</span><span>OpenCV</span><span>IA</span>
-                    </div>
-                    <div class="links">
-                        <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Agent IA Touristique -->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="image/plateau.jpg" alt="Agent IA Touristique - voyage" />
-                    <div class="overlay">
-                        <span>🌍 Agent IA</span>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Agent IA Touristique</h3>
-                    <div class="meta">
-                        <span><i class="fa-solid fa-comment-dots"></i> n8n · LLM</span>
-                    </div>
-                    <p>
-                        Agent conversationnel accessible via WhatsApp/Telegram pour accompagner les touristes
-                        en Côte d'Ivoire (infos sites, hôtels, transports, événements). Automatisation avec n8n.
-                    </p>
-                    <div class="tech">
-                        <span>n8n</span><span>LLM</span><span>WhatsApp API</span>
-                    </div>
-                    <div class="links">
-                        <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Analyse Croisée -->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="image/imagepowerBi.jpg" alt="Analyse croisée - données" />
-                    <div class="overlay">
-                        <span>📊 Analyse</span>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Analyse Croisée</h3>
-                    <div class="meta">
-                        <span><i class="fa-solid fa-chart-simple"></i> Power BI · DAX</span>
-                    </div>
-                    <p>
-                        Tableau de bord interactif croisant trois sources (alcool, conflits armés, homicides)
-                        pour identifier les zones géographiques prioritaires en matière de sécurité et santé publique.
-                    </p>
-                    <div class="tech">
-                        <span>Power BI</span><span>DAX</span><span>Data Viz</span>
-                    </div>
-                    <div class="links">
-                        <a href="https://drive.google.com/file/d/1bua38W6w5HJVRaK4OTtOfojbQcpXp_mv/view?usp=drive_link" target="_blank"><i class="fa-solid fa-eye"></i> Voir</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- ========== PASSION ========== -->
     <section id="passion">
@@ -1494,7 +1561,7 @@
         });
 
         // ============================================
-        // SMOOTH SCROLL (amélioration)
+        // SMOOTH SCROLL
         // ============================================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1508,6 +1575,5 @@
 
         console.log('🚀 Portfolio de Johan Kouassi chargé avec succès !');
     </script>
-
 </body>
 </html>
