@@ -125,11 +125,25 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const btn = this.querySelector('.btn');
     const orig = btn.innerHTML;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
-    setTimeout(() => {
-        btn.innerHTML = '<i class="fas fa-check"></i> Envoyé !';
+
+    fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+        if (response.ok) {
+            btn.innerHTML = '<i class="fas fa-check"></i> Envoyé !';
+            setTimeout(() => { btn.innerHTML = orig; }, 2000);
+            this.reset();
+        } else {
+            throw new Error('Erreur');
+        }
+    })
+    .catch(() => {
+        btn.innerHTML = '<i class="fas fa-times"></i> Erreur !';
         setTimeout(() => { btn.innerHTML = orig; }, 2000);
-        this.reset();
-    }, 1000);
+    });
 });
 
 // ============================================
