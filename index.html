@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Johan Kouassi · Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Mon CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <div class="logo">SITE.JO</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="active">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#passion">Passion</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <div class="badge">
+                        <span class="dot"></span>
+                        Disponible pour des opportunités
+                    </div>
+                    <h1>
+                        Salut, je suis <br />
+                        <span class="highlight">Johan Kouassi</span>
+                    </h1>
+                    <div class="subtitle">
+                        <span id="typedText"></span><span class="cursor">|</span>
+                    </div>
+                    <p>
+                        Apprenant développeur <strong>Data &amp; IA</strong> et
+                        <strong>Full Stack</strong>. Passionné par l'intelligence artificielle,
+                        le traitement de données et les solutions web innovantes.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn">
+                            <i class="fas fa-paper-plane"></i> Me contacter
+                        </a>
+                        <a href="#projets" class="btn btn-outline">
+                            <i class="fas fa-rocket"></i> Voir mes projets
+                        </a>
+                    </div>
+                    <div class="social-hero">
+                        <a href="https://github.com/johan12sc" target="_blank" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://wa.me/2250718296942" target="_blank" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:johansc3612@gmail.com" aria-label="Email">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-glow"></div>
+                    <img src="image/moi3.jpeg" alt="Johan Kouassi" />
+                    <div class="floating-card card-1">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Code</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fa-solid fa-rocket"></i>
+                        <span>Innovation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== À PROPOS ========== -->
+    <section id="apropos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="line"></span> À propos de moi
+                </h2>
+                <p class="section-subtitle">Mon parcours, ma formation et mes valeurs</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card glass">
+                    <div class="icon"><i class="fa-solid fa-user-graduate"></i></div>
+                    <h3>Qui je suis</h3>
+                    <p>
+                        Je m'appelle <strong>Kouassi Johan Chris-Stéphane</strong>, né le 12 mai 2006
+                        à Abidjan, en Côte d'Ivoire. Passionné par l'informatique depuis mon plus jeune âge,
+                        je suis actuellement en formation <strong>Data &amp; Intelligence Artificielle</strong>
+                        chez Simplon Côte d'Ivoire, tout en poursuivant une licence en
+                        <strong>Développement d'Applications et e-Services</strong> à l'UVCI.
+                    </p>
+                    <div class="info-grid">
+                        <div class="info-item"><i class="fa-solid fa-envelope"></i> johansc3612@gmail.com</div>
+                        <div class="info-item"><i class="fa-solid fa-phone"></i> +225 07 18 29 69 42</div>
+                        <div class="info-item"><i class="fa-solid fa-location-dot"></i> Abidjan, Côte d'Ivoire</div>
+                        <div class="info-item"><i class="fa-brands fa-github"></i> github.com/johan12sc</div>
+                    </div>
+                </div>
+                <div class="about-card glass">
+                    <div class="icon"><i class="fa-solid fa-road"></i></div>
+                    <h3>Mon parcours</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> <strong>2026</strong> – Formation Data &amp; IA, Simplon Côte d'Ivoire</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>2024</strong> – Licence DAS, Université Virtuelle de Côte d'Ivoire</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>2024</strong> – Bac D, série scientifique</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>2026</strong> – Certification Python 101 for Data Science (IBM)</li>
+                    </ul>
+                    <div style="margin-top: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span style="background:var(--bg-glass);padding:0.2rem 1rem;border-radius:60px;font-size:0.75rem;border:1px solid var(--border-glass);">Français · Courant</span>
+                        <span style="background:var(--bg-glass);padding:0.2rem 1rem;border-radius:60px;font-size:0.75rem;border:1px solid var(--border-glass);">Anglais · A1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COMPÉTENCES ========== -->
+    <section id="competences">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="line"></span> Compétences
+                </h2>
+                <p class="section-subtitle">Technologies et outils que je maîtrise</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card glass">
+                    <div class="icon"><i class="fa-solid fa-code"></i></div>
+                    <h4>Développement Web</h4>
+                    <div class="tags">
+                        <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+                        <span>React</span><span>React Native</span><span>Flutter</span>
+                        <span>PHP</span><span>Spring Boot</span>
+                    </div>
+                </div>
+                <div class="skill-card glass">
+                    <div class="icon"><i class="fa-solid fa-brain"></i></div>
+                    <h4>Data &amp; IA</h4>
+                    <div class="tags">
+                        <span>Python</span><span>Machine Learning</span><span>LLM</span>
+                        <span>RAG</span><span>LangChain</span><span>Agents IA</span>
+                        <span>OpenCV</span>
+                    </div>
+                </div>
+                <div class="skill-card glass">
+                    <div class="icon"><i class="fa-solid fa-database"></i></div>
+                    <h4>Bases de données</h4>
+                    <div class="tags">
+                        <span>SQL</span><span>MySQL</span><span>PostgreSQL</span>
+                    </div>
+                </div>
+                <div class="skill-card glass">
+                    <div class="icon"><i class="fa-solid fa-pen-fancy"></i></div>
+                    <h4>Design &amp; Outils</h4>
+                    <div class="tags">
+                        <span>UI/UX Design</span><span>Figma</span>
+                        <span>Power BI</span><span>Git</span><span>GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROJETS (DESCRIPTIONS COMPLÈTES) ========== -->
+    <section id="projets">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="line"></span> Projets
+                </h2>
+                <p class="section-subtitle">Des réalisations concrètes alliant IA, data et développement</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- WhatAPlant -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="image/plante.jpg" alt="WhatAPlant - reconnaissance de plantes" />
+                        <div class="overlay">
+                            <span>🌿 WhatAPlant</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>WhatAPlant</h3>
+                        <div class="meta">
+                            <span><i class="fa-brands fa-python"></i> Python · IA · OpenCV</span>
+                        </div>
+                        <p>
+                            Application de reconnaissance de plantes par photo. L'utilisateur prend un cliché
+                            et l'application identifie automatiquement la plante grâce à la vision par ordinateur.
+                        </p>
+                        <div class="tech">
+                            <span>Python</span><span>OpenCV</span><span>IA</span>
+                        </div>
+                        <div class="links">
+                            <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent IA Touristique -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="image/plateau.jpg" alt="Agent IA Touristique - voyage" />
+                        <div class="overlay">
+                            <span>🌍 Agent IA</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Agent IA Touristique</h3>
+                        <div class="meta">
+                            <span><i class="fa-solid fa-comment-dots"></i> n8n · LLM</span>
+                        </div>
+                        <p>
+                            Agent conversationnel accessible via WhatsApp/Telegram pour accompagner les touristes
+                            en Côte d'Ivoire (infos sites, hôtels, transports, événements). Automatisation avec n8n.
+                        </p>
+                        <div class="tech">
+                            <span>n8n</span><span>LLM</span><span>WhatsApp API</span>
+                        </div>
+                        <div class="links">
+                            <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analyse Croisée -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="image/imagepowerBi.jpg" alt="Analyse croisée - données" />
+                        <div class="overlay">
+                            <span>📊 Analyse</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Analyse Croisée</h3>
+                        <div class="meta">
+                            <span><i class="fa-solid fa-chart-simple"></i> Power BI · DAX</span>
+                        </div>
+                        <p>
+                            Tableau de bord interactif croisant trois sources (alcool, conflits armés, homicides)
+                            pour identifier les zones géographiques prioritaires en matière de sécurité et santé publique.
+                        </p>
+                        <div class="tech">
+                            <span>Power BI</span><span>DAX</span><span>Data Viz</span>
+                        </div>
+                        <div class="links">
+                            <a href="https://drive.google.com/file/d/1bua38W6w5HJVRaK4OTtOfojbQcpXp_mv/view?usp=drive_link" target="_blank"><i class="fa-solid fa-eye"></i> Voir</a>
+                            <a href="#" class="video-link" data-video="video/analyse-croisee-demo.mp4"><i class="fa-solid fa-circle-play"></i> Démo vidéo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PASSION ========== -->
+    <section id="passion">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="line"></span> Mes passions
+                </h2>
+                <p class="section-subtitle">Ce qui me motive au quotidien</p>
+            </div>
+            <div class="passion-grid">
+                <div class="passion-card glass">
+                    <div class="icon"><i class="fa-solid fa-robot"></i></div>
+                    <h4>Intelligence Artificielle</h4>
+                    <p>Explorer les possibilités de l'IA pour résoudre des problèmes concrets et automatiser des tâches.</p>
+                </div>
+                <div class="passion-card glass">
+                    <div class="icon"><i class="fa-solid fa-code"></i></div>
+                    <h4>Développement Full Stack</h4>
+                    <p>Créer des applications web et mobiles complètes, du frontend au backend, avec une expérience utilisateur soignée.</p>
+                </div>
+                <div class="passion-card glass">
+                    <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h4>Innovation</h4>
+                    <p>Concevoir des solutions technologiques qui répondent aux besoins des autres et qui ont un impact positif.</p>
+                </div>
+                <div class="passion-card glass">
+                    <div class="icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <h4>Gaming &amp; Jeux Vidéo</h4>
+                    <p>Passionné par l'univers du jeu vidéo, son développement et les technologies qui le rendent possible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CV ========== -->
+    <section id="cv">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="line"></span> Mon CV
+                </h2>
+                <p class="section-subtitle">Consultez-le directement ici ou téléchargez-le</p>
+            </div>
+            <div class="cv-wrapper glass">
+                <iframe class="cv-viewer" src="cv/CV-Johan-Kouassi.pdf" title="CV de Johan Kouassi"></iframe>
+                <a href="cv/CV-Johan-Kouassi.pdf" download class="btn">
+                    <i class="fa-solid fa-download"></i> Télécharger le CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="line"></span> Contact
+                </h2>
+                <p class="section-subtitle">Discutons de votre projet ou d'une opportunité</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="item glass">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div class="text">
+                            <strong>Email</strong>
+                            <span>johansc3612@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="item glass">
+                        <i class="fa-solid fa-phone"></i>
+                        <div class="text">
+                            <strong>Téléphone</strong>
+                            <span>+225 07 18 29 69 42</span>
+                        </div>
+                    </div>
+                    <div class="item glass">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div class="text">
+                            <strong>Localisation</strong>
+                            <span>Abidjan, Côte d'Ivoire</span>
+                        </div>
+                    </div>
+                    <div class="item glass">
+                        <i class="fa-brands fa-github"></i>
+                        <div class="text">
+                            <strong>GitHub</strong>
+                            <span><a href="https://github.com/johan12sc" target="_blank" style="color:var(--accent);">github.com/johan12sc</a></span>
+                        </div>
+                    </div>
+                    <div style="display:flex;gap:14px;margin-top:8px;">
+                        <a href="https://github.com/johan12sc" target="_blank" class="btn btn-sm btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                        <a href="https://wa.me/2250718296942" target="_blank" class="btn btn-sm btn-outline"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+                <form class="contact-form glass" id="contactForm">
+                    <input type="text" placeholder="Votre nom" required />
+                    <input type="email" placeholder="Votre email" required />
+                    <input type="text" placeholder="Sujet" />
+                    <textarea placeholder="Votre message..." required></textarea>
+                    <button type="submit" class="btn">
+                        <i class="fa-solid fa-paper-plane"></i> Envoyer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 <strong>Johan Kouassi</strong> · Tous droits réservés</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/johan12sc" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://wa.me/2250718296942" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="mailto:johansc3612@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== SCROLL TOP ========== -->
+    <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ========== MODALE VIDÉO ========== -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="videoModalClose" aria-label="Fermer la vidéo">
+                <i class="fas fa-times"></i>
+            </button>
+            <video id="modalVideo" controls></video>
+        </div>
+    </div>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="js/script.js"></script>
+</body>
+</html>
