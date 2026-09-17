@@ -144,7 +144,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         btn.innerHTML = '<i class="fas fa-times"></i> Erreur !';
         setTimeout(() => { btn.innerHTML = orig; }, 2000);
     });
-});
+})
 
 // ============================================
 // SMOOTH SCROLL
